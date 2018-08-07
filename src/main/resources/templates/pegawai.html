@@ -1,0 +1,102 @@
+{{>header}}
+
+      <div id="page-wrapper">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <h1>Pegawai <small>Daftar Pegawai</small></h1>
+            <ol class="breadcrumb">
+              <li class="active"><i class="fa fa-user"></i> Pegawai</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Pegawai</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="row">
+                        <div class="col-md-6">
+                            <a href="/addpegawai" class="btn btn-primary pull-left"><i class="fa fa-plus"></i></a>
+                        </div>
+                        <div class="col-md-6">
+                            <form class="form-inline" method="get" action="/pegawai">
+                                <div class="form-group">
+                                    <label>Cari</label>
+                                    <input type="text" name="q" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                  </div>
+                  <div class="row">
+                      <table class="table table-hover">
+                          <thead>
+                          <tr>
+                              <th>Nama</th>
+                              <th>Tanggal Lahir</th>
+                              <th>Kota</th>
+                              <th>Aksi</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {{#listPegawaiView.pegawaiFormViewList}}
+                          <tr>
+                              <td>{{nama}}</td>
+                              <td>{{tglLahir}}</td>
+                              <td>{{kota}}</td>
+                              <td>
+                                  <a href="/editpegawai?id={{idPegawai}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                  <a class="btn btn-primary"><i class="fa fa-trash"></i></a>
+                              </td>
+                          </tr>
+                          {{/listPegawaiView.pegawaiFormViewList}}
+                          </tbody>
+                      </table>
+                      <hr>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                          <ul class="pagination pull-leftt"></ul>
+                      </div>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Page Specific Plugins -->
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>-->
+    <!--<script src="js/morris/chart-data-morris.js"></script>
+    <script src="js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="js/tablesorter/tables.js"></script>-->
+    <script src="js/jquery.simplePagination.js"></script>
+    <script>
+        $(function() {
+          $('.pagination').pagination({
+              items: {{listPegawaiView.items}},
+              itemsOnPage: {{listPegawaiView.itemsOnPage}},
+              selectOnClick: false,
+              hrefTextPrefix: "/pegawai?q={{listPegawaiView.query}}&p=",
+              currentPage: {{listPegawaiView.currentPage}}
+          });
+      });
+    </script>
+
+  </body>
+</html>

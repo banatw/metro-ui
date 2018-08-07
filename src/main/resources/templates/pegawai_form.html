@@ -1,89 +1,87 @@
 {{>header}}
-<!--<div class="grid">
-    <div class="row">
-        <h1>dsdsdsdsds</h1>
-    </div>
-    <div class="row">
-        <div class="cell-md-4 flex-align-center">-->
-<div class="pt-16">
-    <div class="container">
+
+      <div id="page-wrapper">
+
         <div class="row">
-            <form>
-                <div class="form-group">
-                    <label>Nama</label>
-                    <input type="text" name="nama" {{#nama}} value="{{nama}}" {{/nama}}>
-                </div>
-                <div class="form-group">
-                    <label>Tes</label>
-                    <input type="text" data-role="calendarpicker" class="">
-                </div>
-            </form>
+          <div class="col-lg-12">
+            <h1>Pegawai <small>Input Pegawai</small></h1>
+            <ol class="breadcrumb">
+              <li><a href="/pegawai"><i class="fa fa-user"></i> Pegawai</a></li>
+              <li class="active"><i class="fa fa-edit"></i> Input Pegawai</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+        <div class="row" id="message">
+
         </div>
-        <!--<div class="row">
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-        </div>-->
-        <!--<div class="row">
-            <form>
-            <form id="form_pegawai" method="post" action="/simpanpegawai">
-                <div class="form-group">
-                    <label>Nama</label>
-                    <input type="text" name="nama" {{#nama}} value="{{nama}}" {{/nama}}>
-                </div>
-                <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input type="text" data-role="calendarpicker" data-format="%d %B %Y" name="tglLahir" {{#tglLahir}}
-                           value="{{tglLahir}}" {{/tglLahir}}>
-                </div>
-                <div class="form-group">
-                    <label>Kota</label>
-                    <select data-role="select" name="kota">
-                        {{#kotaViewModels}}
-                        <option value="{{idKota}}">{{nama}}</option>
-                        {{/kotaViewModels}}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="button primary">Save</button>
-                    <a href="/pegawai" class="button">Back</a>
-                </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <form id="form_pegawai">
+
+              <div class="form-group">
+                  <label>Nama</label>
+                  <input autocomplete="off" type="text" class="form-control" name="nama" {{#pegawaiFormView.nama}} value="{{pegawaiFormView.nama}}" {{/pegawaiFormView.nama}}>
+              </div>
+              <div class="form-group">
+                  <label>Tanggal Lahir</label>
+                  <input autocomplete="off" type="text" id="tgllahir" class="form-control" name="tglLahir" {{#pegawaiFormView.tglLahir}} value="{{pegawaiFormView.tglLahir}}" {{/pegawaiFormView.tglLahir}}>
+              </div>
+              <div class="form-group">
+                  <label>Kota Lahir</label>
+                  <select class="form-control" name="kota">
+                    {{#pegawaiFormView.kotaViewModels}}
+                    <option {{#selected}} selected {{/selected}} value="{{idKota}}">{{nama}}</option>
+                    {{/pegawaiFormView.kotaViewModels}}
+                  </select>
+              </div>
+                <input type="hidden" name="idPegawai" {{#pegawaiFormView.idPegawai}} value="{{pegawaiFormView.idPegawai}}" {{/pegawaiFormView.idPegawai}}>
+
+              <button onclick="save()" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+              <button onclick="cancel()" class="btn btn-danger"><i class="fa fa-undo"></i> Batal</button>
             </form>
-        </div>-->
-        <!--</div>
-    </div>
-    </div>-->
-        <!--<div class="row">
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-            <h1>HGHDGHGDHDGHD</h1>
-        </div>-->
-    </div>
 
-</div>
-<!-- jQuery first, then Metro UI JS -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/metro.min.js"></script>
+          </div>
+        </div><!-- /.row -->
 
-</body>
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="webjars/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="webjars/bootstrap-datepicker/js/locales/bootstrap-datepicker.id.js"></script>
+    <script>
+        function save() {
+          event.preventDefault();
+          $.post('/simpanpegawai',$('#form_pegawai').serialize(),function(data) {
+              if(data.success==true) {
+                  window.location.href = "/pegawai";
+              }
+              else {
+                   var value =  "<div class='alert alert-danger alert-dismissible' role='alert'>" +
+                      "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+                      "<strong>Warning!</strong> " + data.message + "</div>";
+                  $('#message').html(value);
+              }
+          },'json');
+        }
+
+        function cancel() {
+            event.preventDefault();
+            window.location.href = "/pegawai";
+        }
+
+        $(function () {
+            $('#tgllahir').datepicker({
+                format: "dd MM yyyy",
+                todayBtn: "linked",
+                language: "id",
+                autoclose: true
+            });
+        });
+    </script>
+  </body>
 </html>
